@@ -11,6 +11,7 @@ async function go() {
   await initialize()
 
   const records = await salesforce.getPropertiesForTemplate()
+  
   const workbook = convertToWorkbook(records)
 
   await fs.promises.writeFile('output/transfer.xlsx', workbook)
