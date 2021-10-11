@@ -9,5 +9,5 @@ module.exports = {
     const buffer = xlsx.write(workbook, { type: 'buffer', bookType: 'xlsx' })
 
     return buffer
-  }
+  },
 }

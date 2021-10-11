@@ -8,10 +8,10 @@ async function initialize() {
 }
 
 async function go() {
+  const recordLimit = process.argv[2]
   await initialize()
 
-  const records = await salesforce.getPropertiesForTemplate()
-  
+  const records = await salesforce.getPropertiesForTemplate(recordLimit)
   const workbook = convertToWorkbook(records)
 
   await fs.promises.writeFile('output/transfer.xlsx', workbook)
