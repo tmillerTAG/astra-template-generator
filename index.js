@@ -1,15 +1,11 @@
 require('dotenv').config()
-const salesforce = require('./salesforce-client')
+const initSalesforce = require('./salesforce')
 const { convertToWorkbook } = require('./template')
 const fs = require('fs')
 
-async function initialize() {
-  await salesforce.initConnection()
-}
-
 async function go() {
   const recordLimit = process.argv[2]
-  await initialize()
+  const salesforce = await initSalesforce()
 
   const records = await salesforce.getPropertiesForTemplate(recordLimit)
   const workbook = convertToWorkbook(records)
