@@ -39,7 +39,7 @@ class SalesforceClient {
 
   randomAssetCo(funds, fundName) {
     const fund = funds.find(fund => fund.Name === fundName)
-    return fund ? randomElement(fund.Purchasing_Entities__r).Name : null
+    return fund ? randomElement(fund.Purchasing_Entities__r)?.Name : null
   }
 
   async getPropertiesForTemplate(limit = 10000) {
